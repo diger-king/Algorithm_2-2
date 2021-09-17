@@ -1,18 +1,22 @@
 #삽입정렬
 #new_item이라는 temp변수를 통해 적절한 위치에 숫자를 삽입하여 정렬
 
-arr = [1, 3, 2, 5, 4, 7, 6, 9, 10, 8] # 정렬할 배열
+arr = [3, 8, 2, 5, 4, 7, 6, 9, 10, 1] # 정렬할 배열
 n = len(arr)
 
 new_item = int()
 
-for i in range(0, n-1):
-    if arr[i] > arr[i+1]: #왼쪽, 오른쪽 숫자비교
-        arr[i], arr[i+1] = arr[i+1], arr[i] #왼쪽수가 더 크면 스왑
-    # else: #정렬이 되있다면
-    #     new_item = arr[i+1]
-    #     for j in range(i):
-    #         if arr[j] > arr[j+1]:
-    #             arr[j+1] = arr[j]
-    #             arr[j] = new_item
+for i in range(0, n): # 원소를 하나씩 추가할 반복문
+    new_item = arr[i] # 추가할 원소를 인덱스값을 하나씩 올린다.
+    j = int(i-1) # 추가할 원소 이전에 있는 값들과 비교하기 위한 변수
+
+    while j >= 0: # 비교대상 인덱스가 0이상일경우 반복
+        if arr[j] > arr[i]: # 왼쪽에 있는 비교대상이 더 큰값(A라고 가정)일경우
+            arr[j+1], arr[j] = arr[j], new_item # A의 오른쪽 이웃한 인덱스에 A의 값을 넣고, A에는 new_item에 있는 값을 넣는다.
+            new_item = arr[j] # 이후에 new_item은 현재 A로 초기화 (현재 A가 자신의 왼쪽에 있는 값들과도 비교하여 순서가 맞는지 확인해야하므로)
+            j -= 1 # 비교대상 인덱스를 하나씩 줄여나간다.
+        else: # 왼쪽에 있는 값보다 오른쪽의 값이 크다면 정렬 일단 그 둘사이의 관계는 정렬이 됐으므로 비교대상을 왼쪽으로 하나씩 옮김
+            j -= 1
+        i -= 1 #비교대상을 j뿐만아니라 i까지 움직인다.
+
 print(arr)
