@@ -20,3 +20,4 @@ for i in range(0, n): # 원소를 하나씩 추가할 반복문
         i -= 1 #비교대상을 j뿐만아니라 i까지 움직인다.
 
 print(arr)
+print("Git Modify Test")
